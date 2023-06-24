@@ -1,0 +1,17 @@
+{
+  "name": "next-app-sfgts",
+  "version": "0.1.0",
+  "private": true,
+  "author": "bruno eleodoro",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@taikai/dappkit": "2.0.0-alpha.3",
+    "next": "^12.1.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
