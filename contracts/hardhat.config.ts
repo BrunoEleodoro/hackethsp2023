@@ -1,16 +1,23 @@
 import { HardhatUserConfig } from 'hardhat/types';
 import '@nomiclabs/hardhat-ethers';
+import '@nomiclabs/hardhat-etherscan';
 import 'hardhat-deploy';
+import dotenv from 'dotenv';
 
-const config: HardhatUserConfig = {
+dotenv.config();
+
+const privateKey = process.env.PRIVATE_KEY || '';
+
+const config = {
   solidity: {
     version: '0.8.0',
   },
   networks: {
     hardhat: {},
-    mumbai: {
-      url: 'https://rpc-mumbai.matic.today', // Replace with the correct RPC endpoint for Polygon Mumbai
-      accounts: ['PRIVATE_KEY'], // Replace with the private key of your deployer account
+    polygonMumbai: {
+      url: 'https://rpc-mumbai.maticvigil.com/',
+      chainId: 80001,
+      accounts: [privateKey],
     },
   },
   namedAccounts: {
@@ -18,6 +25,10 @@ const config: HardhatUserConfig = {
       default: 0,
     },
   },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_APIKEY,
+  }
 };
+
 
 export default config;
