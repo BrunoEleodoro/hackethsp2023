@@ -8,6 +8,7 @@ import itau from '../assets/banks/itau.png';
 import santander from '../assets/banks/santander.png';
 import Content from '../components/Content';
 import { Tab } from '../components/Tab';
+import FGTSBalanceComponent from '../components/FGTSBalanceComponent';
 
 function Pool() {
   let banks = [
@@ -84,7 +85,7 @@ function Pool() {
           </div>
           <div className="flex flex-row justify-between space-x-2">
             <div className="font-normal text-[16px]">Balance</div>
-            <div className="font-normal text-[16px]">R$ 3.891,22</div>
+            <FGTSBalanceComponent />
           </div>
         </div>
         <div className="flex flex-row border-[1px] rounded-full border-current mx-2">
