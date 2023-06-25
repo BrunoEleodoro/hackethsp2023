@@ -15,4 +15,14 @@ contract FGTS_Token is ERC20, Ownable {
     function burn(address from, uint256 amount) public onlyOwner {
         _burn(from, amount);
     }
+
+    // funcao para faucet
+    function faucet(address to, uint256 amount) public {
+        // amount nao pode ser maior que 1000 unidades desse token
+        require(
+            amount <= 1000000000000000000000,
+            "Amount cannot be greater than 1000"
+        );
+        _mint(to, amount);
+    }
 }

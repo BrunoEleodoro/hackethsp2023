@@ -3,7 +3,6 @@ import './App.css';
 import Banks from './pages/Banks';
 import Initial from './pages/Initial';
 import Pool from './pages/Pool';
-
 function App() {
   const router = createBrowserRouter([
     {

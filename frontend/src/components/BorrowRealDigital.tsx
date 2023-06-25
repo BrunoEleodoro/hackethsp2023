@@ -6,38 +6,22 @@ import { useAsset } from '../hooks/useAsset';
 import { useAddresses } from '../hooks/useAddresses';
 import { useAccount, useBalance } from 'wagmi';
 import { getAddress } from 'viem';
+import { useBorrow } from '../hooks/useBorrow';
 
-const WithdrawRealDigital = () => {
+const BorrowRealDigital = () => {
   const [amount, setAmount] = React.useState('');
   const { address, isConnected } = useAccount();
 
-  const fgtsAsset = useAsset('FGTS_Token');
+  const realDigital = useAsset('RealDigitalToken');
   const addresses = useAddresses();
-  const parsedAddress = getAddress(fgtsAsset);
+  const parsedAddress = getAddress(realDigital);
 
-  const fgtsBalance = useBalance({
+  const realDigitalBalance = useBalance({
     address: address,
     token: parsedAddress,
   });
-  console.log('approve contract', addresses.LoanContract.address);
-  const approve = useApproval(
-    parsedAddress,
-    addresses.LoanContract.address,
-    amount,
-    fgtsBalance.data
-  );
-  const allowance = useAllowance(
-    getAddress(address),
-    addresses.LoanContract.address,
-    parsedAddress
-  );
-  console.log('allowance, ', allowance.data?.toString());
-  const deposit = useDeposit(amount, fgtsBalance.data);
 
-  //   const submit = (data: Inputs) => {
-  //     console.log(data);
-  //     seniorDeposit.write?.();
-  //   };
+  const borrow = useBorrow(amount, realDigitalBalance.data);
 
   const parsedAmount = parseFloat(amount);
   const isAmountZero = parsedAmount <= 0 || isNaN(parsedAmount);
@@ -51,23 +35,17 @@ const WithdrawRealDigital = () => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
+
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => approve?.approve?.()}
+          onClick={() => borrow.write?.()}
           disabled={isAmountZero || !isConnected}
         >
-          Approve
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => deposit.write?.()}
-          disabled={isAmountZero || !isConnected}
-        >
-          Deposit
+          Borrow
         </button>
       </div>
     </>
   );
 };
 
-export default WithdrawRealDigital;
+export default BorrowRealDigital;

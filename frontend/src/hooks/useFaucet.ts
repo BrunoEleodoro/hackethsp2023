@@ -1,4 +1,4 @@
-import { BigNumber } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { getAddress, parseUnits } from 'ethers/lib/utils.js';
 import {
   useContractWrite,
@@ -7,10 +7,10 @@ import {
 } from 'wagmi';
 import { useAddresses } from './useAddresses';
 import { FetchBalanceResult } from '@wagmi/core';
+import { parseEther } from 'viem';
 
-export function useBorrow(amount: string, asset?: FetchBalanceResult) {
+export function useFaucet(address: string, asset?: FetchBalanceResult) {
   console.log('decimals', asset?.decimals, asset?.symbol);
-  const amountNumber = parseUnits(amount ? amount : '0', asset?.decimals);
 
   const addresses = useAddresses();
   const {
@@ -18,11 +18,10 @@ export function useBorrow(amount: string, asset?: FetchBalanceResult) {
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    address: addresses.LoanContract.address,
-    abi: addresses.LoanContract.abi,
-    functionName: 'borrow',
-    args: [amountNumber],
-    enabled: amountNumber.gt(0),
+    address: addresses.FGTS_Token.address,
+    abi: addresses.FGTS_Token.abi,
+    functionName: 'faucet',
+    args: [address, ethers.utils.parseEther('1000')],
   });
 
   const { data, error, isError, write, isLoading, isSuccess, status } =

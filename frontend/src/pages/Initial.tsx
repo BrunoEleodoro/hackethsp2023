@@ -1,14 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 import CardInitial from '../components/Cards/CardInitial';
 
 function Initial() {
-  const navigate = useNavigate();
-
-  const goToBanks = () => {
-    navigate('/banks');
-  };
-
   return (
     <div className="p-2 flex flex-col">
       <img
@@ -27,12 +20,6 @@ function Initial() {
           desc="Gerencie suas finanças em um único lugar seguro"
         />
       </div>
-      <button
-        className="self-center bg-primary font-normal rounded-full p-8 py-3 text-[20px] mt-6"
-        onClick={goToBanks}
-      >
-        Conectar carteira
-      </button>
     </div>
   );
 }
