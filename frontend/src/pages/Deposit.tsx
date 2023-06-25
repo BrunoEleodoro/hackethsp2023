@@ -8,11 +8,8 @@ import itau from '../assets/banks/itau.png';
 import santander from '../assets/banks/santander.png';
 import Content from '../components/Content';
 import FGTSBalanceComponent from '../components/FGTSBalanceComponent';
-import ListDeposito from '../components/ListDepositos';
-import ListEmprestimo from '../components/ListEmprestimos';
-import { Tab } from '../components/Tab';
 
-function Pool() {
+function Deposit() {
   let banks = [
     {
       name: 'Banco do Brasil',
@@ -89,30 +86,22 @@ function Pool() {
             <div className="font-normal text-[16px]">Balance</div>
             <FGTSBalanceComponent />
           </div>
+          <div className="flex flex-row justify-between space-x-2">
+            <div className="font-normal text-[16px]">Total</div>
+            <FGTSBalanceComponent />
+          </div>
+          <div className="flex flex-row">
+            <input className="rounded-md w-full text-[16px] h-10 text-black p-2 my-3"></input>
+          </div>
+          <div className="flex flex-row">
+            <button className="text-[16px] text-semibold rounded-full bg-primary w-full py-2">
+              Depositar
+            </button>
+          </div>
         </div>
-        <div className="flex flex-row border-[1px] rounded-full border-current mx-2">
-          <Tab
-            active={activeTab === 1}
-            onClick={() => {
-              setActiveTabHandler(1);
-            }}
-          >
-            <span className="text-[15px] font-normal">Depósito</span>
-          </Tab>
-          <Tab
-            active={activeTab === 2}
-            onClick={() => {
-              setActiveTabHandler(2);
-            }}
-          >
-            <span className="text-[15px] font-normal">Pegar empréstimo</span>
-          </Tab>
-        </div>
-        <ListDeposito active={activeTab === 1} />
-        <ListEmprestimo active={activeTab === 2} />
       </div>
     </Content>
   );
 }
 
-export default Pool;
+export default Deposit;

@@ -20,7 +20,7 @@ module.exports = withMT({
     },
     extend: {
       colors: {
-        'current': 'var(--color-primary)', // Replace #ff0000 with your desired color value
+        'current': 'rgba(244, 121, 5, 0.5)', // Replace #ff0000 with your desired color value
       },
     },
   },

@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 import Banks from './pages/Banks';
+import Deposit from './pages/Deposit';
 import Initial from './pages/Initial';
 import Pool from './pages/Pool';
 function App() {
@@ -16,6 +17,10 @@ function App() {
     {
       path: '/pool/:name',
       element: <Pool />,
+    },
+    {
+      path: '/deposit/:name',
+      element: <Deposit />,
     },
   ]);
 

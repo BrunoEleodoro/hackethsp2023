@@ -23,23 +23,10 @@ const CardEmprestimo: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col p-2 space-y-2">
-        <div className="text-[22px] font-bold">Wrapped</div>
-        <div className="text-[14px] font-light">WETH</div>
-        <div className="flex flex-row justify-between">
-          <div className="text-[14px] font-light">Supply balance</div>
-          <div className="text-[14px] font-light">2.05</div>
-        </div>
-        <div className="flex flex-row justify-between">
-          <div className="text-[14px] font-light">Supply APY</div>
-          <div className="text-[14px] font-light">0.20%</div>
-        </div>
-        <div className="flex flex-row justify-between">
-          <div className="text-[14px] font-light">Used a collateral</div>
-          <div className="text-[14px] font-light">0.20%</div>
-        </div>
+        <input className="rounded-md text-[16px] h-10 text-black p-2"></input>
         <div className="flex flex-row">
           <button className="text-[16px] text-semibold rounded-full bg-primary w-full py-2">
-            Depositar
+            Pegar empréstimo
           </button>
         </div>
       </div>
