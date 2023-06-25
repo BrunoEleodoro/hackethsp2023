@@ -18,3 +18,4 @@ RealDigitalToken: https://polygonscan.com/token/0x63A7f12c00c7a4193dB207EAB92922
 
 Wagmi functions:
 
+https://github.com/BrunoEleodoro/hackethsp2023/tree/main/frontend/src/hooks
