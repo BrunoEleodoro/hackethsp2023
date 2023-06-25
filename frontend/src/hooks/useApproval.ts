@@ -18,16 +18,7 @@ export function useApproval(
 ) {
   const [finished, setFinished] = useState(false);
   const amountNumber = parseUnits(amount ? amount : '0', asset?.decimals);
-  console.log(
-    'approval',
-    token,
-    spender,
-    amount,
-    asset?.symbol,
-    asset?.decimals,
-    amountNumber,
-    amountNumber.toString()
-  );
+
   const {
     config,
     error: prepareError,
@@ -36,7 +27,7 @@ export function useApproval(
     address: token,
     abi: erc20ABI,
     functionName: 'approve',
-    args: [spender, amountNumber],
+    args: [spender, BigInt(amount)],
     enabled: amountNumber.gt(0),
   });
 

@@ -1,6 +1,7 @@
 import type { SwitchButtonStylesType } from '@material-tailwind/react';
 import { Switch, ThemeProvider } from '@material-tailwind/react';
 import { useNavigate, useParams } from 'react-router-dom';
+import FGTSBalanceComponent from '../FGTSBalanceComponent';
 
 const CardDeposito: React.FC = () => {
   const navigate = useNavigate();
@@ -50,13 +51,14 @@ const CardDeposito: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col p-2 space-y-3">
-          <div className="text-[22px] font-bold">Wrapped</div>
-          <div className="text-[14px] font-light">WETH</div>
+          <div className="text-[22px] font-bold">Wrapped FGTS</div>
+          <div className="text-[14px] font-light">sFGTS</div>
           <div className="flex flex-row justify-between">
             <div className="text-[14px] font-light">Supply balance</div>
             <div className="flex flex-col">
-              <div className="text-[14px] font-light text-end">2.05</div>
-              <div className="text-[14px] font-light">$ 3,887,69</div>
+              <div className="text-[14px] font-light">
+                <FGTSBalanceComponent />
+              </div>
             </div>
           </div>
           <div className="flex flex-row justify-between">

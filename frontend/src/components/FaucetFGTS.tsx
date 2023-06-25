@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useFaucet } from '../hooks/useFaucet';
+import { getAddress } from 'viem';
+import { useAccount, useBalance } from 'wagmi';
 import { useAddresses } from '../hooks/useAddresses';
 import { useAsset } from '../hooks/useAsset';
-import { useAccount, useBalance } from 'wagmi';
-import { getAddress } from 'viem';
+import { useFaucet } from '../hooks/useFaucet';
 
 const FaucetFGTS = () => {
   const [amount, setAmount] = React.useState('');
@@ -16,10 +16,8 @@ const FaucetFGTS = () => {
     address: address,
     token: parsedAddress,
   });
-  const faucet = useFaucet(address ?? '', fgtsBalance.data);
+  const faucet = useFaucet(address ?? '');
 
-  const parsedAmount = parseFloat(amount);
-  const isAmountZero = parsedAmount <= 0 || isNaN(parsedAmount);
   return (
     <>
       <div className="flex flex-row gap-2">
@@ -28,7 +26,7 @@ const FaucetFGTS = () => {
           onClick={() => faucet.write?.()}
           //   disabled={isAmountZero || !isConnected}
         >
-          Faucet
+          Faucet FGTS
         </button>
       </div>
     </>

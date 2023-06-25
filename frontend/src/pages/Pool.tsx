@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import bancoBrasil from '../assets/banks/bancoBrasil.png';
 import bradesco from '../assets/banks/bradesco.png';
 import caixa from '../assets/banks/caixa.png';
@@ -11,6 +11,8 @@ import FGTSBalanceComponent from '../components/FGTSBalanceComponent';
 import ListDeposito from '../components/ListDepositos';
 import ListEmprestimo from '../components/ListEmprestimos';
 import { Tab } from '../components/Tab';
+import ExistingDeposits from '../components/ExistingDeposits';
+import RealDigitalBalance from '../components/RealDigitalBalance';
 
 function Pool() {
   let banks = [
@@ -40,6 +42,7 @@ function Pool() {
     },
   ];
   const params = useParams();
+  const navigate = useNavigate();
   const bank = banks.find((bank) => bank.name === params.name);
   const [activeTab, setActiveTab] = useState(1);
 
@@ -51,6 +54,14 @@ function Pool() {
     <Content noPadding={true}>
       <div className="flex flex-col space-y-2 pb-10">
         <div className="flex flex-col space-y-2 border-b-[1px] border-current pb-3 p-2">
+          {/* back button */}
+
+          <button
+            className="text-[16px] text-semibold rounded-full bg-primary w-20 py-2"
+            onClick={() => navigate(-1)}
+          >
+            👈 Voltar
+          </button>
           <div className="font-normal text-[14px]">Dashboard</div>
           <div className="flex flex-row items-center space-x-2 !mb-5">
             <img src={bank?.logo} className="w-10 w-10 rounded-md" />
@@ -58,16 +69,18 @@ function Pool() {
           </div>
           <div className="flex flex-row justify-between space-x-2">
             <div className="flex flex-col">
-              <div className="font-normal text-[16px]">Net worth</div>
-              <div className="font-normal text-[16px]">$ 2.9k</div>
+              <div className="font-normal text-[16px]">FGTS Depositado</div>
+              <ExistingDeposits />
             </div>
             <div className="flex flex-col">
               <div className="font-normal text-[16px]">Net APY</div>
               <div className="font-normal text-[16px]">- 2.48%</div>
             </div>
             <div className="flex flex-col">
-              <div className="font-normal text-[16px]">Net worth</div>
-              <div className="font-normal text-[16px]">2.46</div>
+              <div className="font-normal text-[16px]">
+                RealDigital Emprestado
+              </div>
+              <RealDigitalBalance />
             </div>
           </div>
           <div className="border-[1px] border-current text-[12px] p-1 px-2 w-24 text-center rounded-full">

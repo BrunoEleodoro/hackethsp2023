@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import bancoBrasil from '../assets/banks/bancoBrasil.png';
 import bradesco from '../assets/banks/bradesco.png';
 import caixa from '../assets/banks/caixa.png';
@@ -8,8 +8,12 @@ import itau from '../assets/banks/itau.png';
 import santander from '../assets/banks/santander.png';
 import Content from '../components/Content';
 import FGTSBalanceComponent from '../components/FGTSBalanceComponent';
+import DepositComponent from '../components/DepositComponent';
+import ExistingDeposits from '../components/ExistingDeposits';
+import RealDigitalBalance from '../components/RealDigitalBalance';
 
 function Deposit() {
+  const navigate = useNavigate();
   let banks = [
     {
       name: 'Banco do Brasil',
@@ -48,6 +52,12 @@ function Deposit() {
     <Content noPadding={true}>
       <div className="flex flex-col space-y-2 pb-10">
         <div className="flex flex-col space-y-2 border-b-[1px] border-current pb-3 p-2">
+          <button
+            className="text-[16px] text-semibold rounded-full bg-primary w-20 py-2"
+            onClick={() => navigate(-1)}
+          >
+            👈 Voltar
+          </button>
           <div className="font-normal text-[14px]">Dashboard</div>
           <div className="flex flex-row items-center space-x-2 !mb-5">
             <img src={bank?.logo} className="w-10 w-10 rounded-md" />
@@ -55,16 +65,16 @@ function Deposit() {
           </div>
           <div className="flex flex-row justify-between space-x-2">
             <div className="flex flex-col">
-              <div className="font-normal text-[16px]">Net worth</div>
-              <div className="font-normal text-[16px]">$ 2.9k</div>
+              <div className="font-normal text-[16px]">FGTS Depositado</div>
+              <ExistingDeposits />
             </div>
             <div className="flex flex-col">
               <div className="font-normal text-[16px]">Net APY</div>
               <div className="font-normal text-[16px]">- 2.48%</div>
             </div>
             <div className="flex flex-col">
-              <div className="font-normal text-[16px]">Net worth</div>
-              <div className="font-normal text-[16px]">2.46</div>
+              <div className="font-normal text-[16px]">REAL Emprestado</div>
+              <RealDigitalBalance />
             </div>
           </div>
           <div className="border-[1px] border-current text-[12px] p-1 px-2 w-24 text-center rounded-full">
@@ -90,14 +100,7 @@ function Deposit() {
             <div className="font-normal text-[16px]">Total</div>
             <FGTSBalanceComponent />
           </div>
-          <div className="flex flex-row">
-            <input className="rounded-md w-full text-[16px] h-10 text-black p-2 my-3"></input>
-          </div>
-          <div className="flex flex-row">
-            <button className="text-[16px] text-semibold rounded-full bg-primary w-full py-2">
-              Depositar
-            </button>
-          </div>
+          <DepositComponent />
         </div>
       </div>
     </Content>

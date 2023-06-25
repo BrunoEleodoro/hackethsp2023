@@ -12,7 +12,7 @@ function App() {
       element: <Initial />,
     },
     {
-      path: '/status',
+      path: '/status/:name',
       element: <Status />,
     },
     {

@@ -21,7 +21,7 @@ export function useDeposit(amount: string, asset?: FetchBalanceResult) {
     address: addresses.LoanContract.address,
     abi: addresses.LoanContract.abi,
     functionName: 'deposit',
-    args: [amountNumber],
+    args: [amountNumber.toString()],
     enabled: amountNumber.gt(0),
   });
 
