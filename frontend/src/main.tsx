@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi';
 import { createPublicClient, http } from 'viem';
-import { arbitrum, avalanche, hardhat, polygonMumbai } from 'wagmi/chains';
+import { WagmiConfig, configureChains, createConfig, mainnet } from 'wagmi';
+import { hardhat, polygonMumbai } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
-import App from './App.tsx';
+import App from './App';
 import './index.css';
 // Configure chains & providers with the Alchemy provider.
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)

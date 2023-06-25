@@ -1,19 +1,29 @@
-import { useAccount } from 'wagmi';
-import ConnectWalletButton from './components/ConnectWalletButton';
-import DepositComponent from './components/DepositComponent';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import './App.css';
+import Banks from './pages/Banks';
+import Initial from './pages/Initial';
+import Pool from './pages/Pool';
 
 function App() {
-  const { address, isConnected } = useAccount();
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Initial />,
+    },
+    {
+      path: '/banks',
+      element: <Banks />,
+    },
+    {
+      path: '/pool/:name',
+      element: <Pool />,
+    },
+  ]);
+
   return (
-    <div className="bg-gray-700 text-white min-h-screen">
-      <ConnectWalletButton />
-      <br />
-      {isConnected && (
-        <>
-          <DepositComponent />
-        </>
-      )}
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
