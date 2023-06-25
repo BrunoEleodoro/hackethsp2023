@@ -8,23 +8,23 @@ import Status from './pages/Status';
 function App() {
   const router = createBrowserRouter([
     {
-      path: process.env.PUBLIC_URL + '/',
+      path: '/',
       element: <Initial />,
     },
     {
-      path: process.env.PUBLIC_URL + '/status/:name',
+      path: '/status/:name',
       element: <Status />,
     },
     {
-      path: process.env.PUBLIC_URL + '/banks',
+      path: '/banks',
       element: <Banks />,
     },
     {
-      path: process.env.PUBLIC_URL + '/pool/:name',
+      path: '/pool/:name',
       element: <Pool />,
     },
     {
-      path: process.env.PUBLIC_URL + '/deposit/:name',
+      path: '/deposit/:name',
       element: <Deposit />,
     },
   ]);
