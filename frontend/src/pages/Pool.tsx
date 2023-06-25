@@ -7,8 +7,10 @@ import inter from '../assets/banks/inter.png';
 import itau from '../assets/banks/itau.png';
 import santander from '../assets/banks/santander.png';
 import Content from '../components/Content';
-import { Tab } from '../components/Tab';
 import FGTSBalanceComponent from '../components/FGTSBalanceComponent';
+import ListDeposito from '../components/ListDepositos';
+import ListEmprestimo from '../components/ListEmprestimos';
+import { Tab } from '../components/Tab';
 
 function Pool() {
   let banks = [
@@ -106,6 +108,8 @@ function Pool() {
             <span className="text-[15px] font-normal">Pegar empréstimo</span>
           </Tab>
         </div>
+        <ListDeposito active={activeTab === 1} />
+        <ListEmprestimo active={activeTab === 2} />
       </div>
     </Content>
   );
