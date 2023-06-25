@@ -15,19 +15,25 @@ function ConnectWalletButton() {
   };
 
   const { disconnect } = useDisconnect();
-
+  const formattedAddress = `${address?.slice(0, 6)}...${address?.slice(-4)}`;
   if (isConnected)
     return (
-      <div>
-        Connected to {address}
+      <div className="self-center ">
+        {formattedAddress}
         <br />
-        <button onClick={() => disconnect()}>Disconnect</button>
+        <button
+          className="bg-primary font-normal rounded-full p-8 py-3 text-[20px] mt-6"
+          onClick={() => goToBanks()}
+        >
+          Prosseguir
+        </button>
       </div>
     );
+
   return (
     <button
       className="self-center bg-primary font-normal rounded-full p-8 py-3 text-[20px] mt-6"
-      onClick={goToBanks}
+      onClick={() => connect()}
     >
       Conectar carteira
     </button>

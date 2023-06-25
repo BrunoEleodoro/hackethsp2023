@@ -1,5 +1,6 @@
 import Logo from '../assets/logo.png';
 import CardInitial from '../components/Cards/CardInitial';
+import ConnectWalletButton from '../components/ConnectWalletButton';
 
 function Initial() {
   return (
@@ -20,6 +21,7 @@ function Initial() {
           desc="Gerencie suas finanças em um único lugar seguro"
         />
       </div>
+      <ConnectWalletButton />
     </div>
   );
 }
