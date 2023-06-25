@@ -1,6 +1,6 @@
 import { HardhatUserConfig } from 'hardhat/types';
-import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-ethers';
 import 'hardhat-deploy';
 import dotenv from 'dotenv';
 
@@ -8,7 +8,7 @@ dotenv.config();
 
 const privateKey = process.env.PRIVATE_KEY || '';
 
-const config = {
+const config: HardhatUserConfig = {
   solidity: {
     version: '0.8.0',
   },
@@ -19,6 +19,11 @@ const config = {
       chainId: 80001,
       accounts: [privateKey],
     },
+    polygon: {
+      url: 'https://polygon-rpc.com/',
+      chainId: 137,
+      accounts: [privateKey],
+    }
   },
   namedAccounts: {
     deployer: {
@@ -26,8 +31,11 @@ const config = {
     },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_APIKEY,
+    apiKey: {
+      polygon: process.env.ETHERSCAN_APIKEY ?? ""
+    }
   }
+
 };
 
 

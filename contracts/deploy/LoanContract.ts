@@ -14,12 +14,14 @@ const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnviro
   const fgtsTokenDeployment = await get("FGTS_Token");
   const realDigitalTokenDeployment = await get("RealDigitalToken");
 
-  const LoanContract = await ethers.getContractFactory("LoanContract");
+  const RealDigitalToken = await ethers.getContractAt("RealDigitalToken", realDigitalTokenDeployment.address);
   const loanContract = await deploy("LoanContract", {
     from: deployer,
     args: [fgtsTokenDeployment.address, realDigitalTokenDeployment.address],
     log: true,
   });
+
+  await RealDigitalToken.connect(await ethers.getSigner(deployer)).mint(loanContract.address, ethers.utils.parseEther("10000000"));
 
   console.log("LoanContract deployed!");
   console.log("Loan Contract address:", loanContract.address);
